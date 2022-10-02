@@ -1,8 +1,8 @@
 from colorama import Fore
 import data_service as dts
-
 import state
 import mongo_setup
+
 
 
 def main():
@@ -49,6 +49,10 @@ def show_commands():
         dts.error_msg('please chose a valid option')
 
 
+
+
+
+
 def get_action():
     text = '> '
     if state.active_account:
@@ -62,6 +66,7 @@ def create_account():
     print('****************REGISTER****************')
     name = input("Whats your name? ").lower().capitalize()
     email = input("Wats your e-mail address? ")
+    dts.validate(email)
     # checking if account exist
     old_account = dts.find_account_by_email(email)
     if old_account:  # is True
