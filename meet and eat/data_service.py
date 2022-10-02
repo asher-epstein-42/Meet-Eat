@@ -1,8 +1,10 @@
+import re
 from colorama import Fore
 
 import state
 from host import Host
 
+email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
 def create_account(name: str, email: str, country: str, city: str, is_vegan: bool, is_vegetarian: bool, is_kosher: bool,
                    is_halal: bool, hobbies: str, can_you_host: bool):  # -> Host
@@ -24,6 +26,12 @@ def create_account(name: str, email: str, country: str, city: str, is_vegan: boo
 def find_account_by_email(email: str):  # -> Host
     host_name = Host.objects(email=email).first()
     return host_name
+def validate(email):
+    # pass the regular expression
+    # and the string into the fullmatch() method
+    if not (re.fullmatch(email_regex, email)):
+        error_msg(f'{email} is an invalid email')
+        raise Exception
 
 
 def find_a_meal():
