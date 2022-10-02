@@ -21,6 +21,4 @@ class Host(mongoengine.Document):
         'collection': 'hosts'
     }
 
-    # booked_as_host = mongoengine.EmbeddedDocumentListField(Booked_as_host)
-    # booked_as_guest = mongoengine.EmbeddedDocumentListField(Booked_as_Guest)
-
+  
