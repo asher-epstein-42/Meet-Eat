@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class Host(mongoengine.Document):
-    register_time = mongoengine.DateTimeField(default=datetime.now) # NO (), might cose a problem
+    register_time = mongoengine.DateTimeField(default=datetime.now) 
     name = mongoengine.StringField(required=True)
     email = mongoengine.StringField(required=True)
     country = mongoengine.StringField(required=True)
